@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  backendnew:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001" 
+  frontendnew:
+    build:
+      context: ./frontend 
+    ports:
+      - "3000:3000" 
