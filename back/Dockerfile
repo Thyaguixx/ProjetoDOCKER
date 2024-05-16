@@ -1,6 +1,6 @@
 FROM node:14
-WORKDIR /backend
-COPY . /backend
+WORKDIR /back
+COPY . /back
 RUN npm install
 EXPOSE 3001
 ENTRYPOINT npm run dev
