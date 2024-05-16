@@ -1,37 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Table, Button } from 'react-bootstrap';
 import Axios from 'axios';
-import wallpaper from '../images/wallpaper_pacman.jpg';
-import gatoNoia from '../images/gatonoia-removebg-preview.png';
-
-const wallpaperStyle = {
-    width: '100%',
-    height: '100vh',
-    objectFit: 'cover',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-};
-
-const corpoCadastroStyle = {
-    position: 'absolute',
-    zIndex: 2,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '45vh',
-    marginLeft: '600px'
-};
-
-const gatoNoiaStyle = {
-    position: 'absolute',
-    zIndex: 2,
-    marginTop: '965px',
-    marginLeft: '1990px'
-};
+import { useNavigate } from 'react-router-dom';
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate();
 
     const GETUsuarios = async () => {
         try {
@@ -57,34 +31,37 @@ const UserList = () => {
         fetchUsers();
     }, []);
 
+    const handleAddUser = () => {
+        navigate('/cadastro-usuario');
+    };
+
     return (
-        <div style={{ position: 'relative' }}>
-            <img src={wallpaper} alt="Wallpaper" style={wallpaperStyle} />
-            <div style={corpoCadastroStyle}>
-                <img src={gatoNoia} alt="Gato noia" style={gatoNoiaStyle} />
-                <div className="container">
-                    <h2 style={{ color: 'whitesmoke' }}>Lista de Usuários</h2>
-                    <table style={{ color: 'whitesmoke', border: '1px solid whitesmoke' }}>
-                        <thead>
-                            <tr>
-                                <th style={{ width: '50px'}}>Nome</th>
-                                <th style={{ width: '50px'}}>Idade</th>
-                                <th style={{ width: '50px'}}>Curso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user) => (
-                                <tr key={user.UsuarioNome}>
-                                    <td>{user.UsuarioNome}</td>
-                                    <td>{user.UsuarioIdade}</td>
-                                    <td>{user.UsuarioCurso}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+        <Container className="mt-5 d-flex justify-content-center">
+            <div className="bg-white p-4 rounded shadow" style={{ width: '80%', maxWidth: '800px' }}>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h2 className="text-center mb-0">Lista de Usuários</h2>
+                    <Button variant="primary" onClick={handleAddUser}>Adicionar Usuário</Button>
                 </div>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Curso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user, index) => (
+                            <tr key={index}>
+                                <td>{user.UsuarioNome}</td>
+                                <td>{user.UsuarioIdade}</td>
+                                <td>{user.UsuarioCurso}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
-        </div>
+        </Container>
     );
 };
 
