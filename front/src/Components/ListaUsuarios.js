@@ -37,7 +37,7 @@ const UserList = () => {
         try {
             const response = await Axios.get(`${process.env.REACT_APP_API_URL}/GETUsuarios`);
             if (response.data.Sucesso) {
-                return response.data.usuarios;
+                return response.data.ListaUsuarios;
             } else {
                 console.error('Erro ao buscar usuários:', response.data.msg);
                 return [];
@@ -67,15 +67,17 @@ const UserList = () => {
                     <table style={{ color: 'whitesmoke', border: '1px solid whitesmoke' }}>
                         <thead>
                             <tr>
-                                <th style={{ width: '50px'}}>ID</th>
-                                <th style={{ width: '50px'}}>Login</th>
+                                <th style={{ width: '50px'}}>Nome</th>
+                                <th style={{ width: '50px'}}>Idade</th>
+                                <th style={{ width: '50px'}}>Curso</th>
                             </tr>
                         </thead>
                         <tbody>
                             {users.map((user) => (
-                                <tr key={user.UsuarioID}>
-                                    <td>{user.UsuarioID}</td>
-                                    <td>{user.UsuarioLogin}</td>
+                                <tr key={user.UsuarioNome}>
+                                    <td>{user.UsuarioNome}</td>
+                                    <td>{user.UsuarioIdade}</td>
+                                    <td>{user.UsuarioCurso}</td>
                                 </tr>
                             ))}
                         </tbody>

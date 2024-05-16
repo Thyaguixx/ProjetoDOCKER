@@ -41,7 +41,7 @@ function Inicio() {
         <div className="row">
           <div className="col-md-6">
             <div className="text-center">
-              <a href="/cadastro" className="btn btn-primary">
+              <a href="/cadastro-usuario" className="btn btn-primary">
                 Cadastrar usuário
               </a>
             </div>
