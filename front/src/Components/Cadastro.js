@@ -27,7 +27,7 @@ function Cadastro() {
             });
 
             if (response.data.Sucesso) {
-                console.log(response.data);
+                // console.log(response.data);
                 localStorage.setItem('dataList', JSON.stringify(response.data.Lista));
                 
                 iziToast.success({
@@ -43,7 +43,7 @@ function Cadastro() {
                 });
             }
         } catch (error) {
-            console.error('Erro ao enviar dados:', error);
+            // console.error('Erro ao enviar dados:', error);
             iziToast.error({
                 title: 'Erro ao enviar dados',
                 position: 'topRight'

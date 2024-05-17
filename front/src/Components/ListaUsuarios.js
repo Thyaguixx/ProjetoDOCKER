@@ -13,11 +13,11 @@ const UserList = () => {
             if (response.data.Sucesso) {
                 return response.data.ListaUsuarios;
             } else {
-                console.error('Erro ao buscar usuários:', response.data.msg);
+                // console.error('Erro ao buscar usuários:', response.data.msg);
                 return [];
             }
         } catch (error) {
-            console.error('Erro ao buscar usuários:', error);
+            // console.error('Erro ao buscar usuários:', error);
             return [];
         }
     };

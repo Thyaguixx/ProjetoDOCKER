@@ -15,12 +15,12 @@ app.post('/SETUsuarios', (req, res) => {
     const { dados } = req.body
     dataList.push(dados)
 
-    console.log('Usuário cadastrado com sucesso!');
-    console.log(dataList)
+    // console.log('Usuário cadastrado com sucesso!');
+    // console.log(dataList)
     res.send({ Sucesso: true, msg: 'Usuário cadastrado com sucesso!', Lista: dataList });
 
 });
 
 app.listen(3001, () => {
-    console.log("Servidor rodando!")
+    // console.log("Servidor rodando!")
 })
